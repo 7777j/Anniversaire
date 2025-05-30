@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire anniversaire</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #1c1c1c, #444);
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background-color: #222;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    input, textarea, button {
+      width: 90%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background-color: #00c853;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Joyeux anniversaire à moi !</h1>
+    <p>Un an de plus ! 😄 Tu veux connaître mon âge exact ? Remplis ce petit formulaire 👇</p>
+
+    <form onsubmit="event.preventDefault(); window.location.href='historique.html';">
+      <input type="text" placeholder="Ton prénom" required>
+      <input type="email" placeholder="Ton email" required>
+      <textarea placeholder="Un petit mot ou ton ressenti 😄"></textarea>
+      <button type="submit">Voir l'âge exact 🕵️</button>
+    </form>
+  </div>
+</body>
+</html>
