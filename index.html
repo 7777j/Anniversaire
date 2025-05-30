@@ -7,7 +7,9 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #1c1c1c, #444);
+      background-image: url('https://images.unsplash.com/photo-1589927986089-35812388d1d1?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
       color: white;
       text-align: center;
       padding: 40px;
@@ -15,10 +17,10 @@
     .container {
       max-width: 500px;
       margin: auto;
-      background-color: #222;
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
     input, textarea, button {
       width: 90%;
@@ -34,10 +36,19 @@
       font-weight: bold;
       cursor: pointer;
     }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid #00c853;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <img class="profile-img" src="https://via.placeholder.com/120" alt="Ma photo">
     <h1>🎉 Joyeux anniversaire à moi !</h1>
     <p>Un an de plus ! 😄 Tu veux connaître mon âge exact ? Remplis ce petit formulaire 👇</p>
 
