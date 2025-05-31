@@ -238,7 +238,8 @@
 </head>
 <body>
   <!-- Audio de bienvenue -->
-  <audio id="welcome-audio" src="https://github.com/7777j/Anniversaire/blob/main/jesus.mp3" autoplay></audio>
+ <audio id="welcome-audio" src="https://7777j.github.io/Anniversaire/jesus.mp3" autoplay loop></audio>
+
   <div class="personal-block">
     <div class="personal-content">
       <img class="profile-img" src="https://i.imgur.com/QJENHS3.png" alt="Photo de profil" id="profilePic" style="cursor:pointer;">
@@ -337,6 +338,15 @@
         customAlert.style.display = 'none';
       }
     });
+    //audio
+     window.addEventListener('DOMContentLoaded', function () {
+    const audio = document.getElementById('welcome-audio');
+    document.body.addEventListener('click', () => {
+      if (audio && audio.paused) {
+        audio.play().catch(e => console.log("Lecture bloquée : ", e));
+      }
+    }, { once: true });
+  });
   </script>
 </body>
 </html>
