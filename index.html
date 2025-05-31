@@ -22,19 +22,19 @@
     }
     .container {
        position: relative;
-       width: 380px;
+       width: 350px;
        min-height: 420px;
        background: transparent;
        border-radius: 8px !important;
-       overflow: hidden;
+       overflow: hidden; 
     }
     .container::before{
         content: '';
         position: absolute;
         top: -50%;
         left: -50%;
-        width: 380px;
-        height: 420px;
+        width: 350px;
+        min-height: 420px;
         background: linear-gradient(0deg, transparent, #03fe78, #03fe78);
         transform-origin: bottom right; 
         animation: animate 7s linear infinite;
@@ -44,8 +44,8 @@
         position: absolute;
         top: -50%;
         left: -50%;
-        width: 380px;
-        height: 420px;
+        width: 350px;
+        min-height: 420px;
         background: linear-gradient(0deg, transparent, #d803fe, #d803fe);
         transform-origin: bottom right; 
         animation: animate 7s linear infinite;
