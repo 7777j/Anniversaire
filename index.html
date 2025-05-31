@@ -17,37 +17,131 @@
     .container {
       max-width: 500px;
       margin: auto;
-      background-color: black;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      position: relative;
+      z-index: 1;
+      overflow: hidden; /* important pour masquer le débordement */
+      background: transparent;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,255,128,0.1);
     }
+    .border-anim {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.border-anim .top,
+.border-anim .bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #00ff99, #00cfff, #a600ff, #ff00ea, #00ff99);
+  background-size: 200% 100%;
+  filter: drop-shadow(0 0 6px #00ff99);
+}
+.border-anim .top {
+  top: 0;
+  animation: borderTopAnim 2s linear infinite;
+}
+.border-anim .bottom {
+  bottom: 0;
+  animation: borderBottomAnim 2s linear infinite;
+}
+
+.border-anim .left,
+.border-anim .right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #00ff99, #00cfff, #a600ff, #ff00ea, #00ff99);
+  background-size: 100% 200%;
+  filter: drop-shadow(0 0 6px #00ff99);
+}
+.border-anim .left {
+  left: 0;
+  animation: borderLeftAnim 2s linear infinite;
+}
+.border-anim .right {
+  right: 0;
+  animation: borderRightAnim 2s linear infinite;
+}
+
+@keyframes spin {
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+    @keyframes borderTopAnim {
+      0% { background-position: 200% 0; }
+      100% { background-position: 0 0; }
+    }
+    @keyframes borderBottomAnim {
+      0% { background-position: 0 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes borderLeftAnim {
+      0% { background-position: 0 200%; }
+      100% { background-position: 0 0; }
+    }
+    @keyframes borderRightAnim {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 200%; }
+    }
+    @keyframes border-rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
     input, textarea, button {
       width: 90%;
+      background-color: transparent;
+      color: white;
       margin: 10px 0;
       padding: 10px;
       border-radius: 8px;
-      border: none;
+      border: 1.5px solid #f1f1f1;
       font-size: 16px;
     }
+    input::placeholder, textarea::placeholder {
+      color: #f1f1f1;
+      opacity: 0.8;
+
+    }
     button {
-      background-color: #00c853;
+      background-color: transparent;
       color: white;
       font-weight: bold;
       cursor: pointer;
     }
+    button:hover{
+      background-color: #00ff99;
+    }
     .profile-img {
-      width: 120px;
-      height: 120px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 15px;
-      border: 3px solid #00c853;
+      border: 3px solid #fff;
     }
   </style>
 </head>
 <body >
   <div class="container">
+    <div class="border-anim">
+  <span class="top"></span>
+  <span class="right"></span>
+  <span class="bottom"></span>
+  <span class="left"></span>
+</div>
     <img class="profile-img" src="https://i.imgur.com/B3fsKMi.jpeg" alt="Ma photo">
 
     <h1>🎉 Joyeux anniversaire à moi !</h1>
