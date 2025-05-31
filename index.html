@@ -1,130 +1,118 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulaire anniversaire</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "poppins", sans-serif;
+    }
     body {
-      font-family: Arial, sans-serif;
-      background-image: url(https://i.imgur.com/c9MBp1G.jpeg) !important;
-     background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: url(https://i.imgur.com/c9MBp1G.jpeg;) no-repeat center center fixed;
+        background-size: cover;
     }
     .container {
-      max-width: 500px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-      position: relative;
-      z-index: 1;
-      overflow: hidden; /* important pour masquer le débordement */
-      background: transparent;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,255,128,0.1);
+       position: relative;
+       width: 380px;
+       min-height: 520px;
+       background: transparent;
+       border-radius: 8px !important;
+       overflow: hidden;
     }
-    .border-anim {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-}
-
-.border-anim .top,
-.border-anim .bottom {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 4px;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #00ff99, #00cfff, #a600ff, #ff00ea, #00ff99);
-  background-size: 200% 100%;
-  filter: drop-shadow(0 0 6px #00ff99);
-}
-.border-anim .top {
-  top: 0;
-  animation: borderTopAnim 2s linear infinite;
-}
-.border-anim .bottom {
-  bottom: 0;
-  animation: borderBottomAnim 2s linear infinite;
-}
-
-.border-anim .left,
-.border-anim .right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #00ff99, #00cfff, #a600ff, #ff00ea, #00ff99);
-  background-size: 100% 200%;
-  filter: drop-shadow(0 0 6px #00ff99);
-}
-.border-anim .left {
-  left: 0;
-  animation: borderLeftAnim 2s linear infinite;
-}
-.border-anim .right {
-  right: 0;
-  animation: borderRightAnim 2s linear infinite;
-}
-
-@keyframes spin {
-      100% {
-        transform: rotate(1turn);
-      }
+    .container::before{
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px;
+        min-height: 520px;
+        background: linear-gradient(0deg, transparent, #03fe78, #03fe78);
+        transform-origin: bottom right; 
+        animation: animate 7s linear infinite;
     }
-    @keyframes borderTopAnim {
-      0% { background-position: 200% 0; }
-      100% { background-position: 0 0; }
+ .container::after{
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px;
+        min-height: 520px;
+        background: linear-gradient(0deg, transparent, #d803fe, #d803fe);
+        transform-origin: bottom right; 
+        animation: animate 7s linear infinite;
+        animation-delay: 3s;
     }
-    @keyframes borderBottomAnim {
-      0% { background-position: 0 0; }
-      100% { background-position: 200% 0; }
+    @keyframes animate {
+        100%{
+            transform: rotate(360deg);
+        }
+      
     }
-    @keyframes borderLeftAnim {
-      0% { background-position: 0 200%; }
-      100% { background-position: 0 0; }
+    .form {
+        position: absolute;
+       inset: 3px;
+       border-radius: 8px !important;
+       background: transparent;
+       z-index: 10;
+       padding: 50px 40px;
+       display: flex ;
+       flex-direction: column;
+        
     }
-    @keyframes borderRightAnim {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 200%; }
+    .form h2 {
+        letter-spacing: 0.1em;
+        color: #03fe78;
+        text-align: center;
+        margin-bottom: 20px;
+    }  
+    .form p {
+        color: #fff;
+        text-align: center;
+        margin-bottom: 20px;
     }
-    @keyframes border-rotate {
-  100% {
-    transform: rotate(1turn);
-  }
-}
-    input, textarea, button {
-      width: 90%;
-      background-color: transparent;
-      color: white;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1.5px solid #f1f1f1;
-      font-size: 16px;
+    .form .inputBox {
+        position: relative;
+       width: 300px;
+       margin: 20px ;
+    } 
+    .inputBox input,.inputBox textarea {
+        width: 100%;
+        padding: 10px 10px 10px;
+        background: transparent;
+        border-color: #03fe78 ;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        font-size: 1em;
+        outline: none;
+        color: #03fe78;
     }
-    input::placeholder, textarea::placeholder {
-      color: #f1f1f1;
-      opacity: 0.8;
-
+    .inputBox button[type="submit"] {
+        align-self: center;
+        border-radius: 8px;
+        height: 7vh;
+        border: 1px solid #fff;
+        text-align: center;
+        width: 80%;
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s ease;
     }
-    button {
-      background-color: transparent;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
+    ::placeholder{
+        color: #fff;
+        opacity: 0.8;   
     }
-    button:hover{
-      background-color: #00ff99;
-    }
-    .profile-img {
+     .profile-img {
       width: 180px;
       height: 180px;
       border-radius: 50%;
@@ -132,27 +120,27 @@
       margin-bottom: 15px;
       border: 3px solid #fff;
     }
-  </style>
-</head>
-<body >
-  <div class="container">
-    <div class="border-anim">
-  <span class="top"></span>
-  <span class="right"></span>
-  <span class="bottom"></span>
-  <span class="left"></span>
-</div>
-    <img class="profile-img" src="https://i.imgur.com/B3fsKMi.jpeg" alt="Ma photo">
+</style>
+<body>
+    <div class="container">
+        <div class="form">
+            <img class="profile-img" src="https://i.imgur.com/B3fsKMi.jpeg" alt="Ma photo">
 
-    <h1>🎉 Joyeux anniversaire à moi !</h1>
-    <p>Un an de plus ! 😄 Tu veux connaître mon âge exact ? Remplis ce petit formulaire 👇</p>
-
-    <form onsubmit="event.preventDefault(); window.location.href='historique.html';">
-      <input type="text" placeholder="Ton prénom" required>
-      <input type="email" placeholder="Ton email" required>
-      <textarea placeholder="Un petit mot ou ton ressenti 😄"></textarea>
-      <button type="submit">Voir l'âge exact 🕵️</button>
-    </form>
-  </div>
+            <h2>🎉 Joyeux anniversaire à moi !</h2>
+            <p>Un an de plus ! 😄 Tu veux connaître mon âge exact ? Remplis ce petit formulaire 👇</p>
+            <form onsubmit="event.preventDefault(); window.location.href='historique.html';">
+<div class="inputBox">
+                <input type="text" name="" id="" placeholder="Ton prénom" required>
+            </div>
+            
+            <div class="inputBox">
+                <textarea placeholder="Un petit mot ou ton ressenti 😄"></textarea>
+            </div>
+            <div class="inputBox">
+                    <button type="submit">Voir l'âge exact 🕵️</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
