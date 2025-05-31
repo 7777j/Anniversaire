@@ -2,45 +2,341 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Mon âge révélé !</title>
+  <title>Mon Anniversaire 🎉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --accent: #00e676;
+      --bg-dark: #181828;
+      --bg-gradient: linear-gradient(135deg, #181828 0%, #23234a 100%);
+      --card-bg: rgba(30, 30, 50, 0.95);
+      --radius: 18px;
+    }
     body {
-      font-family: sans-serif;
-      background: linear-gradient(to right, #1b1b1b, #333);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background:url(../annivv.jpeg);
+      background-size: cover;
+      background-position: center;
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0;
+    }
+    .personal-block {
+      background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
+                  url("../WhatsApp Image 2025-05-28 à 14.52.56_fdc90d64.jpg");
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 1.5px 0 var(--accent);
+      max-width: 420px;
+      width: 95vw;
+      margin: 40px 0 0 0;
+      padding: 2.5em 2em 2em 2em;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s;
+    }
+    .personal-block::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: var(--radius);
+      /* background: conic-gradient(from 90deg, #00e676, #00bfff, #a600ff, #ff00ea, #00e676); */
+      z-index: 0;
+      filter: blur(6px);
+      opacity: 0.7;
+      animation: borderSpin 4s linear infinite;
+    }
+    @keyframes borderSpin {
+      100% { transform: rotate(1turn);}
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: none;}
+    }
+    .personal-content {
+      position: relative;
+      z-index: 1;
       text-align: center;
-      padding: 50px;
+    }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin: 0 auto 1em auto;
+      display: block;
+      box-shadow: 0 0 18px #00e67655;
+      background: #fff;
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .profile-img:hover {
+      box-shadow: 0 0 0 4px #00e67688, 0 0 18px #00e67655;
+      transform: scale(1.05);
     }
     h1 {
-      font-size: 3em;
-      color: #00e676;
+      font-size: 2em;
+      margin: 0.2em 0 0.2em 0;
+      color: var(--accent);
+      letter-spacing: 1px;
+      font-weight: 800;
+      text-shadow: 0 2px 8px #00e67644;
     }
-    p, li {
-      font-size: 1.3em;
+    h2 {
+      font-size: 1.2em;
+      color: #b2ffdb;
+      margin: 0.2em 0 1em 0;
+      font-weight: 400;
+      font-style: italic;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-      max-width: 600px;
-      margin: 30px auto;
+    .bio {
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 1em 1em 1em 1em;
+      margin-bottom: 1.5em;
+      font-size: 1.08em;
+      line-height: 1.6;
+      box-shadow: 0 2px 8px #00e67611;
+    }
+    .interets {
+      margin: 1.5em 0 1em 0;
       text-align: left;
     }
-    ul li::before {
-      content: '👉 ';
+    .interets-title {
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
+    }
+    .interets-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7em;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .interets-list li {
+      background: #23234a;
+      color: #b2ffdb;
+      border-radius: 8px;
+      padding: 0.4em 1em;
+      font-size: 0.98em;
+      box-shadow: 0 1px 4px #00e67622;
+      border: 1px solid #00e67633;
+    }
+    .footer {
+      margin-top: 2em;
+      color: #b2ffdb;
+      font-size: 1.1em;
+      text-align: center;
+    }
+    /* Modal image plein écran */
+    .img-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+    }
+    .img-modal-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 50%;
+      box-shadow: 0 0 40px #00e67699;
+      display: block;
+      margin: auto;
+    }
+    .close-modal {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: #fff;
+      font-size: 2.5em;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+      transition: color 0.2s;
+    }
+    .close-modal:hover {
       color: #00e676;
+    }
+    /* Modal alerte personnalisée */
+    #customAlert {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: center;
+    }
+    #customAlert .alert-content {
+      background: #23234a;
+      color: #fff;
+      border-radius: 16px;
+      padding: 2em 1.5em;
+      box-shadow: 0 0 24px #00e67655;
+      max-width: 90vw;
+      text-align: center;
+      font-size: 1.15em;
+      position: relative;
+      animation: fadeIn 0.5s;
+    }
+    #customAlert .close-alert {
+      margin-top: 1.5em;
+      background: var(--accent);
+      color: #181828;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6em 1.5em;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #customAlert .close-alert:hover {
+      background: #00bfff;
+    }
+    #customAlert .close-modal {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      color: #fff;
+      font-size: 2em;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10001;
+      transition: color 0.2s;
+    }
+    #customAlert .close-modal:hover {
+      color: #00e676;
+    }
+    @media (max-width: 600px) {
+      .personal-block {
+        padding: 1.2em 0.5em 1.5em 0.5em;
+      }
+      h1 {
+        font-size: 1.3em;
+      }
+      .profile-img {
+        width: 80px;
+        height: 80px;
+      }
+      .bio {
+        font-size: 0.98em;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🥳 J'ai 23 ans aujourd'hui !</h1>
-  <p>Merci d’avoir rempli le formulaire 💌</p>
-  <p>Voici quelques moments marquants de ma vie :</p>
-  <ul>
-    <li>2001 : Ma naissance 🎉</li>
-    <li>2008 : Première rentrée scolaire 👶</li>
-    <li>2019 : Diplôme du bac 🧑‍🎓</li>
-    <li>2024 : Développeur en herbe 💻</li>
-  </ul>
-  <p>🎁 Merci d’avoir partagé ce moment avec moi 💙</p>
+  <!-- Audio de bienvenue -->
+  <audio id="welcome-audio" src="../Rihanna___Justin_Bieber_-_Jesus_the_truth_and_light___official_video__(256k).mp3" autoplay></audio>
+  <div class="personal-block">
+    <div class="personal-content">
+      <img class="profile-img" src="../Capture d'écran 2025-02-16 122538.png" alt="Photo de profil" id="profilePic" style="cursor:pointer;">
+      <h1>Bonjour, je suis Aimé Nganomo ! 🎉</h1>
+      <h2>Dieu m'accorde un an de plus aujourd'hui – Merci de célébrer avec moi !</h2>
+      <div class="bio">
+        Passionné de développement web, de musique et de voyages, j’aime partager mes découvertes et mes projets. Ce blog est mon espace personnel pour vous faire découvrir mon univers, mes passions et mes rêves. Merci d’être là pour mon anniversaire !
+      </div>
+      <div class="interets">
+        <div class="interets-title">Centres d’intérêt :</div>
+        <ul class="interets-list">
+          <li>Développement</li>
+          <li>Musique</li>
+          <li>danse classique</li>
+          <li>Voyages</li>
+          <li>Sport</li>
+          <li>Technologies</li>
+        </ul>
+      </div>
+      <div class="footer">
+        🎁 Merci d’avoir partagé ce moment avec moi&nbsp;! <br>
+        <span style="font-size:1.5em;">💙</span>
+      </div>
+    </div>
+  </div>
+  <!-- Modal pour l'image agrandie -->
+  <div id="imgModal" class="img-modal">
+    <span class="close-modal" id="closeImgModal">&times;</span>
+    <img class="img-modal-content" id="imgInModal">
+  </div>
+  <!-- Modal alerte personnalisée (exemple) -->
+  <div id="customAlert">
+    <div class="alert-content">
+      <span class="close-modal" id="closeCustomAlert">&times;</span>
+      🎉 Bienvenue sur ma page d'anniversaire ! 🎂<br>
+      Merci de célébrer ce jour spécial avec moi. Profitez du contenu et n'hésitez pas à nous rejoindre au lieu-dit, 19h le debut de toute chose. <br>Contactez le 657 325 840 pour confirmer votre présence ! <br>
+      <button class="close-alert" id="closeAlertBtn">Merci !</button>
+    </div>
+  </div>
+  <script>
+    // Pour certains navigateurs, il faut déclencher l'audio après une interaction utilisateur
+    window.addEventListener('DOMContentLoaded', function() {
+      const audio = document.getElementById('welcome-audio');
+      if (audio) {
+        audio.volume = 0.5;
+        // Si autoplay est bloqué, on lance à la première interaction
+        document.body.addEventListener('click', () => {
+          if (audio.paused) audio.play();
+        }, { once: true });
+      }
+    });
+    // Gestion de l'affichage de l'image en grand
+    const profilePic = document.getElementById('profilePic');
+    const imgModal = document.getElementById('imgModal');
+    const imgInModal = document.getElementById('imgInModal');
+    const closeImgModal = document.getElementById('closeImgModal');
+
+    profilePic.addEventListener('click', () => {
+      imgInModal.src = profilePic.src;
+      imgModal.style.display = 'flex';
+    });
+
+    closeImgModal.addEventListener('click', () => {
+      imgModal.style.display = 'none';
+    });
+
+    // Fermer le modal si on clique en dehors de l'image
+    imgModal.addEventListener('click', (e) => {
+      if (e.target === imgModal) {
+        imgModal.style.display = 'none';
+      }
+    });
+
+    // Gestion de la modal d'alerte personnalisée
+    const customAlert = document.getElementById('customAlert');
+    const closeAlertBtn = document.getElementById('closeAlertBtn');
+    const closeCustomAlert = document.getElementById('closeCustomAlert');
+
+    // Ouvrir la modal d'alerte au chargement de la page
+    window.addEventListener('load', () => {
+      customAlert.style.display = 'flex';
+    });
+
+    // Fermer la modal d'alerte
+    closeAlertBtn.addEventListener('click', () => {
+      customAlert.style.display = 'none';
+    });
+
+    closeCustomAlert.addEventListener('click', () => {
+      customAlert.style.display = 'none';
+    });
+
+    // Fermer la modal d'alerte si on clique en dehors du contenu
+    customAlert.addEventListener('click', (e) => {
+      if (e.target === customAlert) {
+        customAlert.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
