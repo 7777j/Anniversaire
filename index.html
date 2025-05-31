@@ -129,14 +129,17 @@
 
             <h2>🎉 Joyeux anniversaire à moi   !</h2>
             <p>Un an de plus ! 😄 Tu veux connaître mon âge exact  et le reste ?  Remplis ce petit formulaire 👇</p>
-           <form action="https://formsubmit.co/marcnganomo@gmail.com" method="POST">
-  <!-- Redirection personnalisée -->
+          <form action="https://formsubmit.co/marcnganomo@gmail.com" method="POST">
+  <!-- Redirection après envoi -->
   <input type="hidden" name="_next" value="https://7777j.github.io/Anniversaire/historique.html">
+    <input type="hidden" name="_subject" value="Nouveau message d’anniversaire 🎉">
 
+  <!-- Ce champ s’appelle "prenom" -->
   <div class="inputBox">
-    <input type="text" name="prénom" placeholder="Ton prénom" required>
+    <input type="text" name="prenom" placeholder="Ton prénom" required>
   </div>
 
+  <!-- Ce champ s’appelle "message" -->
   <div class="inputBox">
     <textarea name="message" placeholder="Un petit mot ou ton ressenti 😄" required></textarea>
   </div>
@@ -145,6 +148,7 @@
     <button type="submit">Voir l'âge exact 🕵️</button>
   </div>
 </form>
+
 
 
         </div>
