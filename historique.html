@@ -281,12 +281,11 @@
   <script>
     // Pour certains navigateurs, il faut déclencher l'audio après une interaction utilisateur
     window.addEventListener('DOMContentLoaded', function() {
-  const audio = document.getElementById('welcome-audio');
-  if (audio) {
-    audio.volume = 0.5;
-    // Si autoplay est bloqué, on lance à la première interaction
-    document.body.addEventListener('click',
-        () => {
+      const audio = document.getElementById('welcome-audio');
+      if (audio) {
+        audio.volume = 0.5;
+        // Si autoplay est bloqué, on lance à la première interaction
+        document.body.addEventListener('click', () => {
           if (audio.paused) audio.play();
         }, { once: true });
       }
