@@ -16,7 +16,7 @@
       min-height: 100vh;
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
-      background:url(https://i.imgur.com/c9MBp1G.jpeg);
+      background:url(../annivv.jpeg);
       background-size: cover;
       background-position: center;
       color: #fff;
@@ -28,7 +28,7 @@
     }
     .personal-block {
       background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), 
-                  url("https://i.imgur.com/B3fsKMi.jpeg");
+                  url("../WhatsApp Image 2025-05-28 à 14.52.56_fdc90d64.jpg");
       border-radius: var(--radius);
       box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 1.5px 0 var(--accent);
       max-width: 420px;
@@ -238,12 +238,10 @@
 </head>
 <body>
   <!-- Audio de bienvenue -->
-<audio id="welcome-audio" src="https://7777j.github.io/Anniversaire/jesus.mp3" autoplay loop></audio>
-
-
+  <audio id="welcome-audio" src="../Rihanna___Justin_Bieber_-_Jesus_the_truth_and_light___official_video__(256k).mp3" autoplay></audio>
   <div class="personal-block">
     <div class="personal-content">
-      <img class="profile-img" src="https://i.imgur.com/QJENHS3.png" alt="Photo de profil" id="profilePic" style="cursor:pointer;">
+      <img class="profile-img" src="../Capture d'écran 2025-02-16 122538.png" alt="Photo de profil" id="profilePic" style="cursor:pointer;">
       <h1>Bonjour, je suis Aimé Nganomo ! 🎉</h1>
       <h2>Dieu m'accorde un an de plus aujourd'hui – Merci de célébrer avec moi !</h2>
       <div class="bio">
@@ -283,11 +281,12 @@
   <script>
     // Pour certains navigateurs, il faut déclencher l'audio après une interaction utilisateur
     window.addEventListener('DOMContentLoaded', function() {
-      const audio = document.getElementById('welcome-audio');
-      if (audio) {
-        audio.volume = 0.5;
-        // Si autoplay est bloqué, on lance à la première interaction
-        document.body.addEventListener('click', () => {
+  const audio = document.getElementById('welcome-audio');
+  if (audio) {
+    audio.volume = 0.5;
+    // Si autoplay est bloqué, on lance à la première interaction
+    document.body.addEventListener('click',
+        () => {
           if (audio.paused) audio.play();
         }, { once: true });
       }
