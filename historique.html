@@ -347,6 +347,19 @@
       }
     }, { once: true });
   });
+      window.addEventListener('DOMContentLoaded', function () {
+    const audio = document.getElementById('welcome-audio');
+    if (audio) {
+      audio.volume = 0.3; // Valeur entre 0 (muet) et 1 (volume max)
+      
+      // Lecture forcée si bloquée
+      document.body.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play().catch(err => console.log("Lecture bloquée :", err));
+        }
+      }, { once: true });
+    }
+  });
   </script>
 </body>
 </html>
